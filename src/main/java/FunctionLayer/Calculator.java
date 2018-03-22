@@ -12,17 +12,17 @@ package FunctionLayer;
 public class Calculator {
     
     public int createSmallBrick(int legoDots) {
-        int sBrickLenght = (legoDots % 4) % 2;
-        return sBrickLenght;
+        int sBrickDots = (legoDots % 4) % 2;
+        return sBrickDots;
     }
 
     public int createMediumBrick(int legoDots) {
-        int mBrickLength = 0;
+        int mBrickDots = 0;
         if (legoDots % 4 == 0) {
-            mBrickLength = (legoDots % 4) / 2;
-            return mBrickLength;
+            mBrickDots = (legoDots % 4) / 2;
+            return mBrickDots;
         }
-        return mBrickLength;
+        return mBrickDots;
     }
 
     public int createLargeBrick(int legoDots) {
@@ -30,7 +30,17 @@ public class Calculator {
         return lBrickDots;
     }
     
-    public int brickWork(int sBrickLength, int mBrickLength, int lBrickLengt) {
+    public int smallBrickWork(int sBrickLength, int sBrickWidth) {
         return 00;
     }
+    
+    public int mediumlBrickWork(int mBrickLength, int mBrickWidth) {
+        return 00;
+    }
+    
+    public int largeBrickWork(int lBrickLength, int lBrickWidth) {
+        return 00;
+    }
+    
+    
 }

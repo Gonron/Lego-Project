@@ -38,12 +38,24 @@ public class BrickConverter extends HttpServlet {
         int width = Integer.parseInt(request.getParameter("width"));
         int height = Integer.parseInt(request.getParameter("height"));
        
-        int largeBrickLength = calc.createLargeBrick(length);
-        int largeBrickWidth = calc.createLargeBrick(width);
-        int mediumBrickLength= calc.createMediumBrick(length);
-        int mediumBrickWidth = calc.createMediumBrick(width);
-        int smallBrickLength = calc.createSmallBrick(length);
-        int smallBrickWidth = calc.createSmallBrick(width);
+        //TODO: Find another way to do this! THIS IS A DIRTY HACK
+        int lBrickLength = calc.createLargeBrick(length);
+        int lBrickWidth = calc.createLargeBrick(width);
+        int mBrickLength= calc.createMediumBrick(length);
+        int mBrickWidth = calc.createMediumBrick(width);
+        int sBrickLength = calc.createSmallBrick(length);
+        int sBrickWidth = calc.createSmallBrick(width);
+        
+        int layer = 1;
+        while (layer != height) {
+            calc.largeBrickWork(lBrickLength, lBrickWidth);
+            calc.mediumlBrickWork(mBrickLength, mBrickWidth);
+            calc.smallBrickWork(sBrickLength, sBrickWidth);
+            layer ++;
+            if (layer % 2 == 0) {
+                //TODO Add something that places a 1x2 brick 
+            }
+        }
   
         
         
