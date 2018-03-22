@@ -10,37 +10,57 @@ package FunctionLayer;
  * @author User
  */
 public class Calculator {
-    
+
     public int createSmallBrick(int legoDots) {
-        int sBrickDots = (legoDots % 4) % 2;
-        return sBrickDots;
+        int sBricks = (legoDots % 4) % 2;
+        return sBricks;
     }
 
     public int createMediumBrick(int legoDots) {
-        int mBrickDots = 0;
-        if (legoDots % 4 == 0) {
-            mBrickDots = (legoDots % 4) / 2;
-            return mBrickDots;
+        int mBricks = 0;
+        if (legoDots % 4 != 0) {
+            mBricks = (legoDots % 4) / 2;
+            return mBricks;
         }
-        return mBrickDots;
+        return mBricks;
     }
 
     public int createLargeBrick(int legoDots) {
-        int lBrickDots = legoDots / 4;
-        return lBrickDots;
+        int lBricks = legoDots / 4;
+        return lBricks;
     }
+
     
-    public int smallBrickWork(int sBrickLength, int sBrickWidth) {
-        return 00;
+    public int createSecoundLayer (int legoDots) {
+       int mBricks = 0;
+        if (legoDots % 4 == 0 && legoDots > 8) {
+            mBricks += 1;
+            legoDots -= 2;
+            createLargeBrick(legoDots);
+            createMediumBrick(legoDots);
+            createSmallBrick(legoDots);
+        }
+        
+        else {
+            createLargeBrick(legoDots);
+            createMediumBrick(legoDots);
+            createSmallBrick(legoDots);
+        }
+        return mBricks;
     }
-    
-    public int mediumlBrickWork(int mBrickLength, int mBrickWidth) {
-        return 00;
-    }
-    
-    public int largeBrickWork(int lBrickLength, int lBrickWidth) {
-        return 00;
-    }
-    
-    
+//    public int createMediumBrickTwo(int legoDots) {
+//        int mBricksTwo = 0;
+//        if (legoDots % 4 == 0) {
+//            return 
+//        }
+//
+//        if () {
+//
+//        }
+//    }
+//
+//    public int createLargeBrickTwo(int legoDots) {
+//
+//    }
+
 }

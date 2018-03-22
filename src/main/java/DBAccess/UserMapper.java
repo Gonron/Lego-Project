@@ -2,6 +2,7 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
+import FunctionLayer.Order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,5 +59,12 @@ public class UserMapper {
         }
     }
     
-  
+    public static void createOrder ( Order order ) throws LoginSampleException {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "";
+        } catch ( SQLException | ClassNotFoundException ex ) {
+            throw new LoginSampleException( ex.getMessage() );
+        }
+    }
 }
