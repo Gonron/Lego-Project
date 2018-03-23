@@ -17,8 +17,7 @@ public class Order {
     private int LargeBrick;
     private boolean orderStatus;
 
-    public Order(int id, int SmallBrick, int MediumBrick, int LargeBrick, boolean orderStatus) {
-        this.id = id;
+    public Order(int SmallBrick, int MediumBrick, int LargeBrick, boolean orderStatus) {
         this.SmallBrick = SmallBrick;
         this.MediumBrick = MediumBrick;
         this.LargeBrick = LargeBrick;

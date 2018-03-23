@@ -30,37 +30,40 @@ public class Calculator {
         return lBricks;
     }
 
-    
-    public int createSecoundLayer (int legoDots) {
-       int mBricks = 0;
+    public int createMediumBrickTwo(int legoDots) {
+        int mBricksTwo = 0;
         if (legoDots % 4 == 0 && legoDots > 8) {
-            mBricks += 1;
-            legoDots -= 2;
-            createLargeBrick(legoDots);
-            createMediumBrick(legoDots);
-            createSmallBrick(legoDots);
+            mBricksTwo = mBricksTwo + 2;
         }
-        
-        else {
-            createLargeBrick(legoDots);
-            createMediumBrick(legoDots);
-            createSmallBrick(legoDots);
+        if (legoDots % 4 != 0) {
+            mBricksTwo = (legoDots % 4) / 2;
         }
-        return mBricks;
+        return mBricksTwo;
     }
-//    public int createMediumBrickTwo(int legoDots) {
-//        int mBricksTwo = 0;
-//        if (legoDots % 4 == 0) {
-//            return 
-//        }
-//
-//        if () {
-//
-//        }
-//    }
-//
-//    public int createLargeBrickTwo(int legoDots) {
-//
-//    }
 
+    public int createLargeBrickTwo(int legoDots) {
+        int lBricksTwo = legoDots / 4;
+        if (legoDots % 4 == 0 && legoDots > 8) {
+            lBricksTwo = lBricksTwo - 1;
+        }
+        return lBricksTwo;
+    }
+
+    public int totalSmallBricks(int sBrickLength, int sBrickWidth, int height) {
+        int unequalLayer = (sBrickLength + sBrickWidth) * (height / 2);
+        int equalLayer = (sBrickLength + sBrickWidth) * (height / 2 - height) ;
+        return (unequalLayer + equalLayer) * 2;
+    }
+
+    public int totalMediumBricks(int mBrickLength, int mBrickLengthTwo, int mBrickWidth, int mBrickWidthTwo, int height) {
+        int unequalLayer = (mBrickLength + mBrickWidth + mBrickLengthTwo + mBrickWidthTwo) * (height / 2);
+        int equalLayer = (mBrickLength + mBrickWidth + mBrickLengthTwo + mBrickWidthTwo) * (height / 2 - height) ;
+        return (unequalLayer + equalLayer) * 2;
+    }
+
+    public int totalLargeBricks(int lBrickLength, int mBrickLengthTwo, int lBrickWidth, int lBrickWidthTwo, int height) {
+        int unequalLayer = (lBrickLength + lBrickWidth + mBrickLengthTwo + lBrickWidthTwo) * (height / 2);
+        int equalLayer = (lBrickLength + lBrickWidth + mBrickLengthTwo + lBrickWidthTwo) * (height / 2 - height) ;
+        return (unequalLayer + equalLayer) * 2;
+    }
 }

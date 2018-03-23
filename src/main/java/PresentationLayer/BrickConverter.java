@@ -6,6 +6,7 @@
 package PresentationLayer;
 
 import FunctionLayer.Calculator;
+import FunctionLayer.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,32 +31,35 @@ public class BrickConverter extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Calculator calc = new Calculator();
         response.setContentType("text/html;charset=UTF-8");
-        
+
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
         int height = Integer.parseInt(request.getParameter("height"));
-       
-//        //TODO: Find another way to do this! THIS IS A DIRTY HACK
-//        int lBrickLength = calc.createLargeBrick(length);
-//        int lBrickWidth = calc.createLargeBrick(width);
-//        int mBrickLength= calc.createMediumBrick(length);
-//        int mBrickWidth = calc.createMediumBrick(width);
-//        int sBrickLength = calc.createSmallBrick(length);
-//        int sBrickWidth = calc.createSmallBrick(width);
 
+        //TODO: Find another way to do this! THIS IS A DIRTY HACK
+        int lBrickLength = calc.createLargeBrick(length);
+        int lBrickWidth = calc.createLargeBrick(width);
+        int mBrickLength = calc.createMediumBrick(length);
+        int mBrickWidth = calc.createMediumBrick(width);
+        int sBrickLength = calc.createSmallBrick(length);
+        int sBrickWidth = calc.createSmallBrick(width);
         
-       int brickWorkWidth = calc.createSecoundLayer(width) ;
+        //This is for every secound layer
+        int mBrickLengthTwo = calc.createMediumBrickTwo(length);
+        int mBrickWidthTwo = calc.createMediumBrickTwo(width);
+        int lBrickLengthTwo = calc.createLargeBrickTwo(length);
+        int lBrickWidthTwo = calc.createLargeBrickTwo(width);
         
-  
+        //This counts all of the bricks!
+        int smallBricks = calc.totalSmallBricks(sBrickLength, sBrickWidth, height);
+        int mediumBricks = calc.totalMediumBricks(mBrickLength, mBrickLengthTwo, mBrickWidth, mBrickWidthTwo, height);
+        int largeBricks = calc.totalLargeBricks(lBrickLength, lBrickLengthTwo, lBrickWidth, lBrickWidthTwo, height);
         
-        
-        
-        
+        Order order = new Order(largeBricks, mediumBricks, smallBricks, false);   
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -93,6 +97,5 @@ public class BrickConverter extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
+    }// </editor-fold>                                                  
 }
