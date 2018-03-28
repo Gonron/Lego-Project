@@ -4,6 +4,7 @@
     Author     : User
 --%>
 
+<%@page import="FunctionLayer.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,5 +15,15 @@
     <body>
         <h1>Here you can see all orders</h1>
         filler text.txt
+        
+         Vis resultat:
+        
+        <% Order order = (Order)request.getAttribute("order");%>
+        
+        <%=order.getLargeBrick()%>
+        <%=order.getMediumBrick()%>
+        <%=order.getSmallBrick()%>
+        
+        
     </body>
 </html>

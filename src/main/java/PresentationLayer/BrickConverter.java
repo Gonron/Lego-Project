@@ -39,7 +39,7 @@ public class BrickConverter extends HttpServlet {
         int width = Integer.parseInt(request.getParameter("width"));
         int height = Integer.parseInt(request.getParameter("height"));
 
-        //TODO: Find another way to do this! THIS IS A DIRTY HACK
+        //TODO: Find another way to do this!
         int lBrickLength = calc.createLargeBrick(length);
         int lBrickWidth = calc.createLargeBrick(width);
         int mBrickLength = calc.createMediumBrick(length);
@@ -58,7 +58,10 @@ public class BrickConverter extends HttpServlet {
         int mediumBricks = calc.totalMediumBricks(mBrickLength, mBrickLengthTwo, mBrickWidth, mBrickWidthTwo, height);
         int largeBricks = calc.totalLargeBricks(lBrickLength, lBrickLengthTwo, lBrickWidth, lBrickWidthTwo, height);
         
-        Order order = new Order(largeBricks, mediumBricks, smallBricks, false);   
+        Order order = new Order(largeBricks, mediumBricks, smallBricks, false);
+        
+        
+        
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
